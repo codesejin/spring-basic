@@ -43,6 +43,9 @@ public class MemoryMemberRepository implements MemberRepository{
     }
 
 
+    public void clearStore() {
+        store.clear();
+    }
     /**
      * Show Context Actions : option + enter -> implement methods
      */
