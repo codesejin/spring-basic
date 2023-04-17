@@ -13,10 +13,24 @@ public class MemberController {
     // 여러개를 new 해서 생성할 필요가 없고 하나만 생성해서 공용으로 사용하면 된다 -> 스프링 컨테이너에 스프링 빈으로 등록을 한다.
     private final MemberService memberService;
 
-    @Autowired // 생성자에 Autowired가 있으면 MemberService를 스프링이 MemberController와 연결 시켜준다 : 연관관계
+    // 생성자 주입
+    @Autowired // 생성자에 Autowired 가 있으면 MemberService 를 스프링이 MemberController 와 연결 시켜준다 : 연관관계
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
+
+    /*
+     *  의존관계가 실행중에 동적으로 변하는 겨웅는 거의 없으므로 생성자 주입을 권장
+     *
+     * // 필드주입
+     * @Autowired private MemberService memberService;
+     *
+     * // 새터주입 : public으로 열려있어야 사용가능한데, 접근제어자 public은 위험
+     *     @Autowired
+     *     public void setMemberService(MemberService memberService) {
+     *         this.memberService = memberService;
+     *     }
+     */
 
     /**
      * @Component 를 포함하는 다음 애노테이션도 스프링 빈으로 자동 등록된다
