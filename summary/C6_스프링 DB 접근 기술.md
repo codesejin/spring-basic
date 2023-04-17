@@ -14,4 +14,23 @@
 - 터미널에서 ~/test.mv.db 파일 생성 확인
 - 이후부터는 jdbc:h2:tcp://localhost/~/test 이렇게 접속
 
+## 순수 JDBC
+- MemoryMemberRepository에서 JdbcMemberRepository로 구현 클래스를 변경
 
+```java
+public class SpringConfig {
+
+    private DataSource dataSource;
+
+    @Autowired
+    public SpringConfig(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    @Bean
+    public MemberRepository memberRepository() {
+        //return new MemoryMemberRepository();
+        return new JdbcMemberRepository(dataSource);
+    }
+}
+```
