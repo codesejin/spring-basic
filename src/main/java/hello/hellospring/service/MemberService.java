@@ -31,12 +31,21 @@ public class MemberService {
 //            throw new IllegalStateException("이미 존재하는 회원입니다.");
 //        });
 
+        long start = System.currentTimeMillis();
+
+        try {
+            validateDuplicateMember(member);
+            memberRepository.save(member);
+            return member.getId();
+        } finally { // 예외가 떠도 시간을 찍어야 할때
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("join = " + timeMs + "ms");
+        }
+
         /**
          * 함수로 뽑아내는 단축키(리팩토링 기능) : control + T
          */
-        validateDuplicateMember(member); // 중복회원 검증
-        memberRepository.save(member);
-        return member.getId();
     }
 
     // 반환타입에 Optional을 보여주는건 별로 안 이쁘다
