@@ -96,4 +96,4 @@ public class TimeTraceAop {
 memberService = class hello.hellospring.service.MemberService$$EnhancerBySpringCGLIB$$1f8182c0
 ```
 
-![img.png](aop2용.png)
+![img.png](aop2.png)
