@@ -21,11 +21,11 @@ public class MemberServiceIntegrationTest {
     MemberRepository memberRepository;
 
     @Test
-    @Commit// DB에 저장
+    //@Commit// DB에 저장
     void 회원가입() {
         //given (이런 상황이 주어졌고)
         Member member = new Member();
-        member.setName("spring");
+        member.setName("spring1");
 
         //when (이걸 실행했을 때)
         Long saveId = memberService.join(member);

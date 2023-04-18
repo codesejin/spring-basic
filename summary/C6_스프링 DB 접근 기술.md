@@ -120,3 +120,20 @@ public class JpaMemberReposiotry implements MemberRepository{
     }
 }
 ```
+
+## 스프링 데이터 JPA
+
+- 리포지토리에 구현 클래스 없이 인터페이스 만으로 개발을 완료 할 수 있다.
+- 반복 개발해온 기본 CRUD 기능도 스프링 데이터 JPA가 모두 제공합니다.
+- 인터페이스에 JpaRepository만 상속해놓으면, 스프링 데이터 JPA가 인터페이스에 대한 구현체를 만들어준다.
+
+```java
+public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Long>, MemberRepository {
+
+    @Override
+    Optional<Member> findByName(String name); // 구현 안해도 끝
+}
+
+```
+
+> 실무에서는 JPA와 스프링 데이터 JPA를 기본으로 사용ㅎ고, 복잡한 동적 쿼리는 Querydsl 을 사용하면 된다.
