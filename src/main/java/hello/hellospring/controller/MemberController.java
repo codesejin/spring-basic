@@ -23,6 +23,7 @@ public class MemberController {
     @Autowired // 생성자에 Autowired 가 있으면 MemberService 를 스프링이 MemberController 와 연결 시켜준다 : 연관관계
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+        System.out.println("memberService = " + memberService.getClass());
     }
 
     @GetMapping("/members/new")
